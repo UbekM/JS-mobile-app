@@ -116,7 +116,7 @@ if (message === 919) {
         );
         alert("Transfer Successful\n\n Thank you. Have a nice day!");
       } else if (other_bank === 2 || other_bank === 3 || other_bank === 4) {
-        // Implement logic for other banks (GTB, FCMB, First Bank)
+        // Implement for other banks (GTB, FCMB, First Bank)
         alert(
           "Transfers to other banks are not currently implemented. Please select UBA for now."
         );
@@ -134,21 +134,44 @@ if (message === 919) {
       parseInt(prompt("Enter amount "));
       alert("Airtime successfully recharged");
     } else if (airtime === 2) {
-      const airtime_options = prompt(
-        "Select any of the following options:\n\n1> MTN\n2> Airtel\n3> Glo\n4> 9mobile"
+      const airtime_options = parseInt(
+        prompt(
+          "Select any of the following Network Providers:\n\n1> MTN\n2> Airtel\n3> Glo\n4> 9mobile"
+        )
       );
+      const networkProviders = {
+        1: "MTN",
+        2: "Airtel",
+        3: "Glo",
+        4: "9mobile",
+      };
+
+      const airtime_provider = networkProviders[airtime_options];
       const airtime_amount = parseInt(prompt("Enter amount "));
       const airtime_phone = parseInt(prompt("Enter Recipient's Phone Number "));
 
       confirm(
         "Confirm Entered Information\n\nNetwork Provider: " +
-          airtime_options +
+          airtime_provider +
           "\nAmount: " +
           airtime_amount +
           "\nReceiver's Phone: " +
           airtime_phone
       );
+      alert("Airtime successfully recharged");
     }
+  }
+
+  // Implement for other menus
+  else if (
+    main_menu === 3 ||
+    main_menu === 4 ||
+    main_menu === 6 ||
+    main_menu === 7
+  ) {
+    alert(
+      "\nFeatures are not currently implemented.\n\n Please select only options 1, 2, 5 and 8 for now."
+    );
   }
 
   //Bank Balance - menu 5
@@ -159,6 +182,26 @@ if (message === 919) {
         "\n\nThank you. Have a nice day!"
     );
   }
+
+  //Next -menu for option 8
+  else if (main_menu === 8) {
+    const sub_menu = parseInt(
+      prompt(
+        "EasyBanking\n\nPage 2:\n1> ATM Locator\n2> Branch Locator\n3> Security Settings"
+      )
+    );
+    if (sub_menu === 1 || sub_menu === 2 || sub_menu === 3) {
+      alert(
+        "\nFeatures are not currently implemented.\n\n Please select only options 1, 2, 5 and 8 for now."
+      );
+    } else {
+      alert("Invalid menu selection. Please try again.");
+    }
+  } else {
+    alert("Invalid menu selection. Please try again.");
+  }
+
+  //welcome page second option
 } else if (message === 2) {
   alert(
     "You have not given consent to proceed for USSD. Banking Session will be closed.\n\nThank you. Have a nice day!"
