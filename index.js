@@ -6,7 +6,7 @@
 
 let user = {
   name: "Michael Ubek",
-  balance: 10960.0,
+  balance: 10960,
   pin: 1234,
   phone: 919,
   bank: "access",
@@ -14,10 +14,10 @@ let user = {
 
 // Display welcome message
 const welcome = confirm(
-  "Welcome to the USSD Banking. N6.98 Network Charge will apply to your account for banking services on this channel"
+  "\nWelcome to the USSD Banking. N6.98 Network Charge will apply to your account for banking services on this channel"
 );
 
-const message = parseInt(prompt("Press 919 to Accept or 2 to Reject: "));
+const message = parseInt(prompt("\nPress 919 to Accept or 2 to Reject: "));
 
 //Accept or Reject
 if (welcome) {
@@ -125,26 +125,40 @@ if (message === 919) {
       }
     }
   }
-}
-//menu two
-else if (main_menu === 2) {
-  const airtime = parseInt(
-    prompt(
-      "Select any of the following options:\n\n1> MTN\n2> Airtel\n3> Glo\n4> 9mobile"
-    )
-  );
-  if (airtime === 1) {
-    prompt()
-  }
-}
+  //menu two
+  else if (main_menu === 2) {
+    const airtime = parseInt(
+      prompt("Select any of the following options:\n\n1> Self\n2> Others")
+    );
+    if (airtime === 1) {
+      parseInt(prompt("Enter amount "));
+      alert("Airtime successfully recharged");
+    } else if (airtime === 2) {
+      const airtime_options = prompt(
+        "Select any of the following options:\n\n1> MTN\n2> Airtel\n3> Glo\n4> 9mobile"
+      );
+      const airtime_amount = parseInt(prompt("Enter amount "));
+      const airtime_phone = parseInt(prompt("Enter Recipient's Phone Number "));
 
-//Bank Balance - menu 5
-else if (main_menu === 5) {
-  alert(
-    "Your Current Account Balance is" +
-      user.balance +
-      "\n\nThank you. Have a nice day!"
-  );
+      confirm(
+        "Confirm Entered Information\n\nNetwork Provider: " +
+          airtime_options +
+          "\nAmount: " +
+          airtime_amount +
+          "\nReceiver's Phone: " +
+          airtime_phone
+      );
+    }
+  }
+
+  //Bank Balance - menu 5
+  else if (main_menu === 5) {
+    alert(
+      "Your Current Account Balance is" +
+        user.balance +
+        "\n\nThank you. Have a nice day!"
+    );
+  }
 } else if (message === 2) {
   alert(
     "You have not given consent to proceed for USSD. Banking Session will be closed.\n\nThank you. Have a nice day!"
